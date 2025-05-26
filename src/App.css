@@ -517,6 +517,9 @@ section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .feature-item {
@@ -737,6 +740,16 @@ section {
   color: #b0b0b0;
 }
 
+.contact-item a {
+  color: #b0b0b0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #00d4ff;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -823,6 +836,56 @@ section {
   padding-top: 2rem;
   text-align: center;
   color: #666;
+}
+
+/* Accessibility Improvements */
+.nav-links a:focus,
+.mobile-nav a:focus,
+.footer-links a:focus {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.primary-button:focus,
+.secondary-button:focus,
+.cta-button:focus {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #00d4ff;
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Skip to main content link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #00d4ff;
+  color: #000;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 10000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Mobile Responsive Design */

@@ -151,6 +151,7 @@ function App() {
           y: mousePosition.y - 10,
         }}
         transition={{ type: "spring", stiffness: 500, damping: 28 }}
+        aria-hidden="true"
       />
 
       {/* Navigation */}
@@ -159,6 +160,8 @@ function App() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+        role="navigation"
+        aria-label="Main navigation"
       >
         <div className="nav-container">
           <motion.div 
@@ -166,20 +169,21 @@ function App() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Zap className="w-8 h-8" />
+            <Zap className="w-8 h-8" aria-hidden="true" />
             <span>JOLTCLICK</span>
           </motion.div>
           
           {/* Desktop Navigation */}
           <div className="nav-links desktop-nav">
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#technologies">Technologies</a>
+            <a href="#services" aria-label="View our services">Services</a>
+            <a href="#about" aria-label="Learn about JOLTCLICK">About</a>
+            <a href="#technologies" aria-label="See our technologies">Technologies</a>
             <motion.a 
               href="#contact" 
               className="cta-button"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              aria-label="Get started with your project"
             >
               Get Started
             </motion.a>
@@ -190,8 +194,10 @@ function App() {
             className="mobile-menu-btn"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileTap={{ scale: 0.9 }}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
           </motion.button>
         </div>
 
@@ -204,21 +210,23 @@ function App() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
+              role="menu"
             >
-              <a href="#services" onClick={() => setIsMenuOpen(false)}>Services</a>
-              <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
-              <a href="#technologies" onClick={() => setIsMenuOpen(false)}>Technologies</a>
-              <a href="#contact" className="cta-button" onClick={() => setIsMenuOpen(false)}>Get Started</a>
+              <a href="#services" onClick={() => setIsMenuOpen(false)} role="menuitem">Services</a>
+              <a href="#about" onClick={() => setIsMenuOpen(false)} role="menuitem">About</a>
+              <a href="#technologies" onClick={() => setIsMenuOpen(false)} role="menuitem">Technologies</a>
+              <a href="#contact" className="cta-button" onClick={() => setIsMenuOpen(false)} role="menuitem">Get Started</a>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="hero">
+      <header className="hero">
         <motion.div 
           className="hero-bg"
           style={{ y: yBg }}
+          aria-hidden="true"
         />
         <motion.div 
           className="hero-content"
@@ -251,13 +259,15 @@ function App() {
               <motion.button 
                 className="primary-button"
                 {...scaleOnHover}
+                aria-label="Start your project with JOLTCLICK"
               >
                 Start Your Project
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </motion.button>
               <motion.button 
                 className="secondary-button"
                 {...scaleOnHover}
+                aria-label="View our portfolio and previous work"
               >
                 View Our Work
               </motion.button>
@@ -269,13 +279,14 @@ function App() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            aria-label="Animated code visualization"
           >
             <motion.div 
               className="floating-card"
               {...floatingAnimation}
             >
               <div className="card-header">
-                <div className="dots">
+                <div className="dots" aria-hidden="true">
                   <motion.span
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: 0 }}
@@ -290,7 +301,7 @@ function App() {
                   />
                 </div>
               </div>
-              <div className="card-content">
+              <div className="card-content" aria-hidden="true">
                 <motion.div 
                   className="code-line"
                   animate={{ width: ["0%", "100%", "100%"] }}
@@ -333,6 +344,7 @@ function App() {
                   left: `${20 + i * 15}%`,
                   top: `${30 + (i % 2) * 20}%`
                 }}
+                aria-hidden="true"
               />
             ))}
           </motion.div>
@@ -343,10 +355,11 @@ function App() {
           className="scroll-indicator"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
+          aria-label="Scroll down to see more"
         >
           <ChevronDown className="w-6 h-6" />
         </motion.div>
-      </section>
+      </header>
 
       {/* Services Section */}
       <section id="services" className="services">
@@ -380,9 +393,10 @@ function App() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
+            role="list"
           >
             {services.map((service, index) => (
-              <motion.div 
+              <motion.article 
                 key={index} 
                 className="service-card" 
                 variants={fadeInUp}
@@ -390,11 +404,13 @@ function App() {
                   y: -10,
                   transition: { duration: 0.3 }
                 }}
+                role="listitem"
               >
                 <motion.div 
                   className={`service-icon gradient-${index}`}
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
+                  aria-hidden="true"
                 >
                   {service.icon}
                 </motion.div>
@@ -410,15 +426,16 @@ function App() {
                     repeat: Infinity,
                     delay: index * 0.5
                   }}
+                  aria-hidden="true"
                 />
-              </motion.div>
+              </motion.article>
             ))}
           </motion.div>
         </motion.div>
       </section>
 
       {/* Features Section */}
-      <section className="features">
+      <section id="about" className="features">
         <motion.div 
           className="container"
           initial={{ opacity: 0 }}
@@ -439,30 +456,33 @@ function App() {
                 We combine technical excellence with innovative design to deliver 
                 solutions that exceed expectations and drive measurable results.
               </p>
-              <motion.div 
+              <motion.ul 
                 className="features-list"
                 variants={staggerContainer}
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
+                role="list"
               >
                 {features.map((feature, index) => (
-                  <motion.div 
+                  <motion.li 
                     key={index} 
                     className="feature-item" 
                     variants={fadeInUp}
                     whileHover={{ x: 10 }}
+                    role="listitem"
                   >
                     <motion.div
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.3 }}
+                      aria-hidden="true"
                     >
                       {feature.icon}
                     </motion.div>
                     <span>{feature.text}</span>
-                  </motion.div>
+                  </motion.li>
                 ))}
-              </motion.div>
+              </motion.ul>
             </motion.div>
             <motion.div 
               className="features-visual"
@@ -474,6 +494,8 @@ function App() {
               <motion.div 
                 className="stats-card"
                 whileHover={{ scale: 1.02 }}
+                role="region"
+                aria-label="Company statistics"
               >
                 <motion.div 
                   className="stat"
@@ -567,9 +589,10 @@ function App() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
+            role="list"
           >
             {technologies.map((tech, index) => (
-              <motion.div 
+              <motion.article 
                 key={index} 
                 className="tech-card" 
                 variants={fadeInUp}
@@ -577,18 +600,20 @@ function App() {
                   y: -10,
                   transition: { duration: 0.3 }
                 }}
+                role="listitem"
               >
                 <div className="tech-header">
                   <motion.div 
                     className="tech-icon"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
+                    aria-hidden="true"
                   >
                     {tech.icon}
                   </motion.div>
                   <h3>{tech.category}</h3>
                 </div>
-                <div className="tech-tools">
+                <div className="tech-tools" role="list">
                   {tech.tools.map((tool, toolIndex) => (
                     <motion.span 
                       key={toolIndex} 
@@ -597,6 +622,7 @@ function App() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: toolIndex * 0.1 }}
                       whileHover={{ scale: 1.1 }}
+                      role="listitem"
                     >
                       {tool}
                     </motion.span>
@@ -612,8 +638,9 @@ function App() {
                     repeat: Infinity,
                     delay: index * 0.5
                   }}
+                  aria-hidden="true"
                 />
-              </motion.div>
+              </motion.article>
             ))}
           </motion.div>
         </motion.div>
@@ -657,56 +684,69 @@ function App() {
                 className="contact-item"
                 whileHover={{ x: 10 }}
               >
-                <Mail className="w-6 h-6" />
+                <Mail className="w-6 h-6" aria-hidden="true" />
                 <div>
                   <h4>Email Us</h4>
-                  <p>hello@joltclick.com</p>
+                  <p>
+                    <a href="mailto:hello@joltclick.com" aria-label="Send email to JOLTCLICK">
+                      hello@joltclick.com
+                    </a>
+                  </p>
                 </div>
               </motion.div>
               <motion.div 
                 className="contact-item"
                 whileHover={{ x: 10 }}
               >
-                <MapPin className="w-6 h-6" />
+                <MapPin className="w-6 h-6" aria-hidden="true" />
                 <div>
                   <h4>Visit Us</h4>
                   <p>London, UK</p>
                 </div>
               </motion.div>
             </motion.div>
-            <motion.form className="contact-form" variants={fadeInUp}>
+            <motion.form 
+              className="contact-form" 
+              variants={fadeInUp}
+              aria-label="Contact form"
+            >
               <div className="form-group">
                 <motion.input 
                   type="text" 
                   placeholder="Your Name" 
                   required 
                   whileFocus={{ scale: 1.02 }}
+                  aria-label="Your name"
                 />
                 <motion.input 
                   type="email" 
                   placeholder="Your Email" 
                   required 
                   whileFocus={{ scale: 1.02 }}
+                  aria-label="Your email address"
                 />
               </div>
               <motion.input 
                 type="text" 
                 placeholder="Project Type" 
                 whileFocus={{ scale: 1.02 }}
+                aria-label="Type of project"
               />
               <motion.textarea 
                 placeholder="Tell us about your project..." 
                 rows="4" 
                 required
                 whileFocus={{ scale: 1.02 }}
+                aria-label="Project description"
               />
               <motion.button 
                 type="submit" 
                 className="primary-button"
                 {...scaleOnHover}
+                aria-label="Send message to JOLTCLICK"
               >
                 Send Message
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </motion.button>
             </motion.form>
           </motion.div>
@@ -714,7 +754,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
+      <footer className="footer" role="contentinfo">
         <div className="container">
           <div className="footer-content">
             <div className="footer-brand">
@@ -722,12 +762,12 @@ function App() {
                 className="logo"
                 whileHover={{ scale: 1.05 }}
               >
-                <Zap className="w-6 h-6" />
+                <Zap className="w-6 h-6" aria-hidden="true" />
                 <span>JOLTCLICK</span>
               </motion.div>
               <p>Crafting the future of digital experiences</p>
             </div>
-            <div className="footer-links">
+            <nav className="footer-links" aria-label="Footer navigation">
               <div>
                 <h4>Services</h4>
                 <motion.a href="#services" whileHover={{ x: 5 }}>Web Development</motion.a>
@@ -740,7 +780,7 @@ function App() {
                 <motion.a href="#technologies" whileHover={{ x: 5 }}>Technologies</motion.a>
                 <motion.a href="#contact" whileHover={{ x: 5 }}>Contact</motion.a>
               </div>
-            </div>
+            </nav>
           </div>
           <div className="footer-bottom">
             <p>&copy; 2024 JOLTCLICK. All rights reserved.</p>
