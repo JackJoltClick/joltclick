@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOLTCLICK Favicon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+        .favicon-preview {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .favicon-item {
+            text-align: center;
+            padding: 10px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            border: 1px solid #00d4ff;
+        }
+        canvas {
+            border: 1px solid #333;
+            margin: 5px;
+        }
+        button {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .instructions {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #00d4ff;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 JOLTCLICK Favicon Generator</h1>
+    
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Click "Generate Favicons" below</li>
+            <li>Right-click each canvas and "Save image as..."</li>
+            <li>Save with the exact filenames shown</li>
+            <li>Replace the files in your public folder</li>
+        </ol>
+    </div>
+
+    <button onclick="generateFavicons()">Generate Favicons</button>
+    
+    <div class="favicon-preview" id="faviconPreview"></div>
+
+    <script>
+        function generateFavicons() {
+            const sizes = [
+                { size: 16, name: 'favicon-16x16.png' },
+                { size: 32, name: 'favicon-32x32.png' },
+                { size: 180, name: 'apple-touch-icon.png' },
+                { size: 192, name: 'logo192.png' },
+                { size: 512, name: 'logo512.png' }
+            ];
+
+            const preview = document.getElementById('faviconPreview');
+            preview.innerHTML = '';
+
+            sizes.forEach(({ size, name }) => {
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+
+                // Draw background circle
+                ctx.fillStyle = '#0a0a0a';
+                ctx.beginPath();
+                ctx.arc(size/2, size/2, size/2 - 2, 0, 2 * Math.PI);
+                ctx.fill();
+
+                // Draw border
+                ctx.strokeStyle = '#00d4ff';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Draw lightning bolt
+                const scale = size / 32;
+                ctx.fillStyle = '#00d4ff';
+                ctx.beginPath();
+                ctx.moveTo(18 * scale, 8 * scale);
+                ctx.lineTo(12 * scale, 16 * scale);
+                ctx.lineTo(16 * scale, 16 * scale);
+                ctx.lineTo(14 * scale, 24 * scale);
+                ctx.lineTo(20 * scale, 16 * scale);
+                ctx.lineTo(16 * scale, 16 * scale);
+                ctx.lineTo(18 * scale, 8 * scale);
+                ctx.fill();
+
+                // Add glow effect
+                ctx.strokeStyle = 'rgba(0, 212, 255, 0.3)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.arc(size/2, size/2, size/2 - 4, 0, 2 * Math.PI);
+                ctx.stroke();
+
+                // Create download link
+                const item = document.createElement('div');
+                item.className = 'favicon-item';
+                item.innerHTML = `
+                    <h4>${size}x${size}</h4>
+                    <div>${canvas.outerHTML}</div>
+                    <button onclick="downloadCanvas(this.previousElementSibling.querySelector('canvas'), '${name}')">
+                        Download ${name}
+                    </button>
+                `;
+                preview.appendChild(item);
+            });
+
+            // Generate ICO file instructions
+            const icoInstructions = document.createElement('div');
+            icoInstructions.className = 'instructions';
+            icoInstructions.innerHTML = `
+                <h3>For favicon.ico:</h3>
+                <p>Use an online converter like <a href="https://favicon.io/favicon-converter/" target="_blank" style="color: #00d4ff;">favicon.io</a> to convert the 32x32 PNG to favicon.ico format.</p>
+            `;
+            preview.appendChild(icoInstructions);
+        }
+
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html> 
