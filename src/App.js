@@ -75,31 +75,31 @@ function App() {
   const services = [
     {
       icon: <Code className="w-8 h-8" />,
-      title: "Custom Web Development",
-      description: "Cutting-edge websites built with modern frameworks and optimized for performance.",
+      title: "Websites That Actually Sell",
+      description: "Forget pretty websites that do nothing. We build conversion machines that turn your traffic into cold, hard cash.",
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: <Smartphone className="w-8 h-8" />,
-      title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications that deliver exceptional user experiences.",
+      title: "Apps That Dominate Markets",
+      description: "Your competitors are still figuring out mobile. We'll have your app crushing it while they're still in meetings.",
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: <Brain className="w-8 h-8" />,
-      title: "AI-Powered Solutions",
-      description: "Intelligent features and automation that transform how your business operates.",
+      title: "AI That Works (Not Hype)",
+      description: "Cut through the AI BS. We implement intelligent systems that actually solve real problems and save you money.",
       color: "from-green-500 to-teal-500"
     }
   ];
 
   const features = [
-    { text: "Lightning-fast performance", icon: <Rocket className="w-5 h-5" /> },
-    { text: "Responsive design across all devices", icon: <Smartphone className="w-5 h-5" /> },
-    { text: "SEO optimized for maximum visibility", icon: <Sparkles className="w-5 h-5" /> },
-    { text: "Advanced security implementations", icon: <Shield className="w-5 h-5" /> },
-    { text: "Scalable architecture", icon: <Code className="w-5 h-5" /> },
-    { text: "24/7 support and maintenance", icon: <CheckCircle className="w-5 h-5" /> }
+    { text: "Lightning-fast sites that Google loves", icon: <Rocket className="w-5 h-5" /> },
+    { text: "Mobile-first design that converts on every device", icon: <Smartphone className="w-5 h-5" /> },
+    { text: "SEO that actually gets you found", icon: <Sparkles className="w-5 h-5" /> },
+    { text: "Fort Knox-level security (hackers hate us)", icon: <Shield className="w-5 h-5" /> },
+    { text: "Bulletproof architecture that scales with your success", icon: <Code className="w-5 h-5" /> },
+    { text: "24/7 support that actually responds", icon: <CheckCircle className="w-5 h-5" /> }
   ];
 
   const technologies = [
@@ -236,7 +236,7 @@ function App() {
         >
           <div className="hero-text">
             <motion.h1 variants={fadeInUp}>
-              Next-Level Digital
+              We Build Digital
               <motion.span 
                 className="gradient-text"
                 animate={{
@@ -248,12 +248,13 @@ function App() {
                   ease: "linear"
                 }}
               >
-                {" "}Experiences
+                {" "}Empires
               </motion.span>
             </motion.h1>
             <motion.p variants={fadeInUp}>
-              We craft cutting-edge websites and custom applications powered by AI, 
-              delivering solutions that drive real business impact and set new industry standards.
+              Stop settling for mediocre websites that convert like a broken vending machine. 
+              We engineer high-performance digital machines that turn visitors into customers 
+              and customers into raving fans.
             </motion.p>
             <motion.div className="hero-buttons" variants={fadeInUp}>
               <motion.button 
@@ -261,7 +262,7 @@ function App() {
                 {...scaleOnHover}
                 aria-label="Start your project with JOLTCLICK"
               >
-                Start Your Project
+                Get My Quote Now
                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </motion.button>
               <motion.button 
@@ -269,7 +270,7 @@ function App() {
                 {...scaleOnHover}
                 aria-label="View our portfolio and previous work"
               >
-                View Our Work
+                See The Results
               </motion.button>
             </motion.div>
           </div>
@@ -376,7 +377,7 @@ function App() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            Our Expertise
+            How We Dominate
           </motion.h2>
           <motion.p 
             className="section-subtitle" 
@@ -385,7 +386,7 @@ function App() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            Transforming ideas into powerful digital solutions
+            While your competitors are still talking, we're already winning
           </motion.p>
           <motion.div 
             className="services-grid"
@@ -451,10 +452,11 @@ function App() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2>Why Choose JOLTCLICK?</h2>
+              <h2>Why We Crush The Competition</h2>
               <p>
-                We combine technical excellence with innovative design to deliver 
-                solutions that exceed expectations and drive measurable results.
+                While other agencies promise the world and deliver disappointment, 
+                we deliver results that make your accountant smile. Here's why smart 
+                business owners choose us over the rest.
               </p>
               <motion.ul 
                 className="features-list"
@@ -511,7 +513,7 @@ function App() {
                     }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    500+
+                    50+
                   </motion.h3>
                   <p>Projects Delivered</p>
                 </motion.div>
@@ -572,7 +574,7 @@ function App() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            Technologies & Tools
+            Our Weapons of Choice
           </motion.h2>
           <motion.p 
             className="section-subtitle" 
@@ -581,7 +583,7 @@ function App() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            Cutting-edge technologies that power our solutions
+            The bleeding-edge tech stack that gives you an unfair advantage
           </motion.p>
           <motion.div 
             className="technologies-grid"
@@ -661,7 +663,7 @@ function App() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            Ready to Transform Your Digital Presence?
+            Ready To Leave Your Competition In The Dust?
           </motion.h2>
           <motion.p 
             className="section-subtitle" 
@@ -670,7 +672,7 @@ function App() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            Let's discuss how we can bring your vision to life with cutting-edge technology
+            Every day you wait is another day your competitors get ahead. Let's fix that.
           </motion.p>
           <motion.div 
             className="contact-content"
@@ -745,7 +747,7 @@ function App() {
                 {...scaleOnHover}
                 aria-label="Send message to JOLTCLICK"
               >
-                Send Message
+                Get My Winning Strategy
                 <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </motion.button>
             </motion.form>
@@ -765,7 +767,7 @@ function App() {
                 <Zap className="w-6 h-6" aria-hidden="true" />
                 <span>JOLTCLICK</span>
               </motion.div>
-              <p>Crafting the future of digital experiences</p>
+              <p>Building digital empires, one click at a time</p>
             </div>
             <nav className="footer-links" aria-label="Footer navigation">
               <div>
